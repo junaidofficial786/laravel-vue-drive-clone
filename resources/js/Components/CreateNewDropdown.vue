@@ -17,7 +17,8 @@
         >
             <div class="px-1 py-1">
                 <MenuItem v-slot="{active}">
-                    <a href="" class="text-green-700 block px-4 py-2 text-sm">New Folder</a>
+                    <a href="#" @click.prevent="showCreateFolderModal" class="text-green-700 block px-4 py-2 text-sm">New
+                        Folder</a>
                 </MenuItem>
             </div>
             <div class="px-1 py-1">
@@ -29,17 +30,21 @@
                 </MenuItem>
             </div>
         </MenuItems>
-
+        <CreateFolderModal v-model="createFolderModal"/>
     </Menu>
 </template>
 
-<script>
-import {defineComponent} from "vue";
-import {Menu, MenuButton, MenuItem, MenuItems} from "@headlessui/vue";
-import {ChevronDownIcon} from "@heroicons/vue/20/solid/index.js";
-import ResponsiveNavLink from "@/Components/ResponsiveNavLink.vue";
+<script setup>
+import {defineProps, ref} from 'vue';
+import {Menu, MenuButton, MenuItem, MenuItems} from '@headlessui/vue';
+import {ChevronDownIcon} from '@heroicons/vue/20/solid/index.js';
+import CreateFolderModal from "@/Components/app/createFolderModal.vue";
+import ResponsiveNavLink from '@/Components/ResponsiveNavLink.vue';
 
-export default defineComponent({
-    components: {MenuItem, ResponsiveNavLink, ChevronDownIcon, Menu, MenuButton, MenuItems}
-})
+const createFolderModal = ref(false)
+
+function showCreateFolderModal() {
+    createFolderModal.value = true
+}
+
 </script>

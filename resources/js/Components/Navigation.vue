@@ -5,17 +5,17 @@
 
 <template>
     <nav class="min-w-[200px]">
-        <div class="h-[80px] px-3 flex items-center gap-3">
-            <Link href="/dashboard">
+        <div >
+            <Link :href="route('myFiles')" class="h-[80px] px-3 flex items-center gap-3">
             <ApplicationLogo class="block h-9 w-auto fill-current text-gray-800 dark:text-gray-200" />
-            </Link>
             LaraStorage
+            </Link>
         </div>
         <div class="px-3">
             <create-new-dropdown />
 
             <div class="py-3">
-                <NavLink href="/">My files</NavLink>
+                <NavLink :href="route('myFiles')" :active="$page.url === '/my-files'">My files</NavLink>
                 <NavLink href="/">Shared with me</NavLink>
                 <NavLink href="/">Shared by me</NavLink>
                 <NavLink href="/">Trash</NavLink>
